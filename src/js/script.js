@@ -155,7 +155,7 @@
               price = price - option.price;
             }
           }
-        };
+        }
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
       }
