@@ -142,19 +142,20 @@
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
           // find image with class .paramId-optionId
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           console.log('this is image:', optionImage);
           // check if there is image with paramId and optionId
           if (optionImage) {
-            if (formData[paramId] && formData[paramId].includes(optionId)) {
+            if (optionSelected) {
               optionImage.classList.add(classNames.menuProduct.imageVisible);
             } else {
               optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
           // check if there is param with a name of paramId in formData and if it includes optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          if (optionSelected) {
             // check if the option is not default
             if (option.default !== true) {
               // add option price to price variable
