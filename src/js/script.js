@@ -43,8 +43,8 @@
   const settings = {
     amountWidget: {
       defaultValue: 1,
-      defaultMin: 1,
-      defaultMax: 9,
+      defaultMin: 0,
+      defaultMax: 10,
     }
   };
 
@@ -206,7 +206,9 @@
 
       /* TODO: Add validation */
       if (thisWidget.value !== newValue && !isNaN(newValue)) {
-        thisWidget.value = newValue;
+        if (newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+          thisWidget.value = newValue;
+        }
       }
       thisWidget.input.value = thisWidget.value;
     }
