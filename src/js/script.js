@@ -169,19 +169,17 @@
             // check if the option is not default
             if (option.default !== true) {
               // add option price to price variable
-              price += option.price;
+              price = price + option.price;
 
             }
           } else {
             // check if the option is default
             if (option.default === true) {
               // reduce price variable
-              price -= option.price;
+              price = price - option.price;
             }
           }
         }
-        /* multiply price by amount */
-        price *= thisProduct.amountWidget.value;
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
       }
@@ -235,6 +233,7 @@
     }
     announce() {
       const thisWidget = this;
+
       const event = new Event('updated');
       thisWidget.element.dispatchEvent(event);
     }
