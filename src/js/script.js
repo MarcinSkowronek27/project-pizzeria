@@ -92,6 +92,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
+        thisProduct.processOrder();
+      })
     }
     initAccordion() {
       const thisProduct = this;
@@ -166,17 +169,19 @@
             // check if the option is not default
             if (option.default !== true) {
               // add option price to price variable
-              price = price + option.price;
+              price += option.price;
 
             }
           } else {
             // check if the option is default
             if (option.default === true) {
               // reduce price variable
-              price = price - option.price;
+              price -= option.price;
             }
           }
         }
+        /* multiply price by amount */
+        price *= thisProduct.amountWidget.value;
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
       }
@@ -208,6 +213,7 @@
       if (thisWidget.value !== newValue && !isNaN(newValue)) {
         if (newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
           thisWidget.value = newValue;
+          thisWidget.announce();
         }
       }
       thisWidget.input.value = thisWidget.value;
@@ -226,6 +232,11 @@
         event.preventDefault();
         thisWidget.setValue(parseInt(thisWidget.value + 1));
       });
+    }
+    announce() {
+      const thisWidget = this;
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
   const app = {
