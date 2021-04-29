@@ -40,13 +40,13 @@
     },
   };
 
-  const settings = {
-    amountWidget: {
-      defaultValue: 1,
-      defaultMin: 1,
-      defaultMax: 9,
-    }
-  };
+  // const settings = {
+  //   amountWidget: {
+  //     defaultValue: 1,
+  //     defaultMin: 1,
+  //     defaultMax: 9,
+  //   }
+  // };
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -185,11 +185,11 @@
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
-
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       console.log('AmountWidget:', thisWidget);
       console.log('constructor elements:', element);
+      thisWidget.initActions();
     }
     getElements(element) {
       const thisWidget = this;
@@ -209,6 +209,19 @@
         thisWidget.value = newValue;
       }
       thisWidget.input.value = thisWidget.value;
+    }
+    initActions() {
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener('change', thisWidget.setValue(thisWidget.input.value));
+      thisWidget.linkDecrease.addEventListener('click', function () {
+        event.preventDefault();
+        thisWidget.setValue(parseInt(thisWidget.value - 1));
+      });
+      thisWidget.linkIncrease.addEventListener('click', function () {
+        event.preventDefault();
+        thisWidget.setValue(parseInt(thisWidget.value + 1));
+      });
     }
   }
   const app = {
