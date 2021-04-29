@@ -40,13 +40,13 @@
     },
   };
 
-  // const settings = {
-  //   amountWidget: {
-  //     defaultValue: 1,
-  //     defaultMin: 1,
-  //     defaultMax: 9,
-  //   }
-  // };
+  const settings = {
+    amountWidget: {
+      defaultValue: 1,
+      defaultMin: 1,
+      defaultMax: 9,
+    }
+  };
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -213,7 +213,9 @@
     initActions() {
       const thisWidget = this;
 
-      thisWidget.input.addEventListener('change', thisWidget.setValue(thisWidget.input.value));
+      thisWidget.input.addEventListener('change', function () {
+        thisWidget.setValue(thisWidget.input.value)
+      });
       thisWidget.linkDecrease.addEventListener('click', function () {
         event.preventDefault();
         thisWidget.setValue(parseInt(thisWidget.value - 1));
