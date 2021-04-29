@@ -180,18 +180,19 @@
             }
           }
         }
-        /* multiply price by amount */
-        price = price * thisProduct.amountWidget.value;
-        // update calculated price in the HTML
-        thisProduct.priceElem.innerHTML = price;
+
       }
+      /* multiply price by amount */
+      price = price * thisProduct.amountWidget.value;
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;
     }
   }
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.setValue(settings.amountWidget.defaultValue);
       console.log('AmountWidget:', thisWidget);
       console.log('constructor elements:', element);
       thisWidget.initActions();
@@ -206,7 +207,6 @@
     }
     setValue(value) {
       const thisWidget = this;
-
       const newValue = parseInt(value);
 
       /* TODO: Add validation */
