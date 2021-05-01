@@ -226,9 +226,9 @@
       const thisProduct = this;
 
       productSummary = {
-        id = thisProduct.id,
-        name = thisProduct.name,
-        amount = thisProduct.amount,
+        id: thisProduct.id,
+        name: thisProduct.name,
+        amount: thisProduct.amount,
       };
     }
   }
