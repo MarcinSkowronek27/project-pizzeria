@@ -220,20 +220,21 @@
     addToCart() {
       const thisProduct = this;
 
-      app.cart.add(thisProduct.prepareCartProduct);
+      app.cart.add(thisProduct.prepareCartProduct());
     }
 
     prepareCartProduct() {
       const thisProduct = this;
 
-      productSummary = {};
-      productSummary.id = thisProduct.id;
-      productSummary.name = thisProduct.name;
-      productSummary.amount = thisProduct.amount;
-      productSummary.priceSingle = thisProduct.priceSingle;
-      productSummary.price = priceSingle * amount;
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.data.price,
+      };
+
+      productSummary.price = productSummary.priceSingle * productSummary.amount;
       productSummary.params = {};
-      ;
       return productSummary;
     }
   }
