@@ -213,23 +213,28 @@
       /* multiply price by amount */
       price = price * thisProduct.amountWidget.value;
       // update calculated price in the HTML
+      thisProduct.priceSingle = price;
       thisProduct.priceElem.innerHTML = price;
     }
 
-    addToCart(){
+    addToCart() {
       const thisProduct = this;
 
-      app.cart.add(thisProduct);
+      app.cart.add(thisProduct.prepareCartProduct);
     }
 
-    prepareCartProduct(){
+    prepareCartProduct() {
       const thisProduct = this;
 
-      productSummary = {
-        id: thisProduct.id,
-        name: thisProduct.name,
-        amount: thisProduct.amount,
-      };
+      productSummary = {};
+      productSummary.id = thisProduct.id;
+      productSummary.name = thisProduct.name;
+      productSummary.amount = thisProduct.amount;
+      productSummary.priceSingle = thisProduct.priceSingle;
+      productSummary.price = priceSingle * amount;
+      productSummary.params = {};
+      ;
+      return productSummary;
     }
   }
   class AmountWidget {
@@ -310,7 +315,7 @@
       })
     }
 
-    add(menuProduct){
+    add(menuProduct) {
       // const thisCart = this;
 
       console.log('adding product', menuProduct);
