@@ -230,11 +230,10 @@
         id: thisProduct.id,
         name: thisProduct.data.name,
         amount: thisProduct.amountWidget.value,
-        priceSingle: thisProduct.data.price,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        params: thisProduct.prepareCartProductParams(),
       };
-
-      productSummary.price = productSummary.priceSingle * productSummary.amount;
-      productSummary.params = thisProduct.prepareCartProductParams();
       return productSummary;
 
     }
@@ -254,7 +253,7 @@
         params[paramId] = {
           label: param.label,
           options: {}
-        }
+        };
         // for every option in this category
         for (let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
@@ -381,8 +380,8 @@
       thisCartProduct.getElements(element);
       console.log('thisCartProduct', thisCartProduct);
     }
-// OBSŁUGA WIDGETU ILOŚCI SZTUK
-    getElements(element){
+    // OBSŁUGA WIDGETU ILOŚCI SZTUK
+    getElements(element) {
       const thisCartProduct = this;
 
       thisCartProduct.dom = {};
