@@ -358,7 +358,7 @@
       /* create element using utils.createElementFromHTML */
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       /* find cart container */
-      const cartContainer = document.querySelector(select.containerOf.cart);
+      // const cartContainer = document.querySelector(select.containerOf.cart);
       /* add element to cart */
       thisCart.dom.productList.appendChild(generatedDOM);
       console.log('adding cart', cartProduct);
