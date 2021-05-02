@@ -381,7 +381,7 @@
       thisCartProduct.getElements(element);
       console.log('thisCartProduct', thisCartProduct);
     }
-
+// OBSŁUGA WIDGETU ILOŚCI SZTUK
     getElements(element){
       const thisCartProduct = this;
 
