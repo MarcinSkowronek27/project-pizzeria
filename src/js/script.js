@@ -267,7 +267,7 @@
           }
         }
       }
-      console.log('show params', params);
+      // console.log('show params', params);
       return params;
     }
   }
@@ -351,9 +351,17 @@
     }
 
     add(menuProduct) {
-      // const thisCart = this;
-
-      console.log('adding product', menuProduct);
+      const thisCart = this;
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+      //  console.log(generatedHTML);
+      /* create element using utils.createElementFromHTML */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      /* find cart container */
+      const cartContainer = document.querySelector(select.containerOf.cart);
+      /* add element to cart */
+      thisCart.dom.productList.appendChild(generatedDOM);
+      console.log('adding cart', menuProduct);
     }
   }
   const app = {
