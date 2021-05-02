@@ -263,7 +263,7 @@
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
           // check if there is param with a name of paramId in formData and if it includes optionId
           if (optionSelected) {
-            params[paramId].options = {[optionId]: optionId};
+            params[paramId].options[optionId] = option.label;
           }
         }
       }
@@ -340,6 +340,7 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
 
     initActions() {
