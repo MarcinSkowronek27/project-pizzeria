@@ -362,13 +362,13 @@
       /* add element to cart */
       thisCart.dom.productList.appendChild(generatedDOM);
       console.log('adding menuProduct', menuProduct);
-      thisCart.products.push(menuProduct);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       console.log('thisCart.products', thisCart.products);
     }
   }
   class CartProduct {
     constructor(menuProduct, element) {
-      thisCartProduct = this;
+      const thisCartProduct = this;
       // menuProduct = productSummary;
       // element = generatedDOM;
       thisCartProduct.id = menuProduct.id;
@@ -383,7 +383,7 @@
     }
 
     getElements(element){
-      thisCartProduct = this;
+      const thisCartProduct = this;
 
       thisCartProduct.dom = {};
       thisCartProduct.dom.wrapper = element;
