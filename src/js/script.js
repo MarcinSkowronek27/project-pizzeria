@@ -350,10 +350,10 @@
       });
     }
 
-    add(cartProduct) {
+    add(menuProduct) {
       const thisCart = this;
       /* generate HTML based on template */
-      const generatedHTML = templates.cartProduct(cartProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
       //  console.log(generatedHTML);
       /* create element using utils.createElementFromHTML */
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
@@ -361,7 +361,36 @@
       // const cartContainer = document.querySelector(select.containerOf.cart);
       /* add element to cart */
       thisCart.dom.productList.appendChild(generatedDOM);
-      console.log('adding cart', cartProduct);
+      console.log('adding menuProduct', menuProduct);
+      thisCart.products.push(menuProduct);
+      console.log('thisCart.products', thisCart.products);
+    }
+  }
+  class CartProduct {
+    constructor(menuProduct, element) {
+      thisCartProduct = this;
+      // menuProduct = productSummary;
+      // element = generatedDOM;
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.price = menuProduct.price;
+      // name, amount, params, priceSingle, price
+      thisCartProduct.getElements(element);
+      console.log('thisCartProduct', thisCartProduct);
+    }
+
+    getElements(element){
+      thisCartProduct = this;
+
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+      thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+      thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
     }
   }
   const app = {
