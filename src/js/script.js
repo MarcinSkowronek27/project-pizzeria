@@ -89,7 +89,7 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-      // console.log('new Product:', thisProduct);
+      console.log('new Product:', thisProduct);
     }
     renderInMenu() {
       const thisProduct = this;
@@ -210,10 +210,10 @@
         }
 
       }
+      thisProduct.priceSingle = price;
       /* multiply price by amount */
       price = price * thisProduct.amountWidget.value;
       // update calculated price in the HTML
-      thisProduct.priceSingle = price;
       thisProduct.priceElem.innerHTML = price;
     }
 
