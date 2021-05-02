@@ -350,10 +350,10 @@
       });
     }
 
-    add(menuProduct) {
+    add(cartProduct) {
       const thisCart = this;
       /* generate HTML based on template */
-      const generatedHTML = templates.cartProduct(menuProduct);
+      const generatedHTML = templates.cartProduct(cartProduct);
       //  console.log(generatedHTML);
       /* create element using utils.createElementFromHTML */
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
@@ -361,7 +361,7 @@
       const cartContainer = document.querySelector(select.containerOf.cart);
       /* add element to cart */
       thisCart.dom.productList.appendChild(generatedDOM);
-      console.log('adding cart', menuProduct);
+      console.log('adding cart', cartProduct);
     }
   }
   const app = {
