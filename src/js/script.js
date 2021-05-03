@@ -394,10 +394,11 @@
     }
     initCartWidget() {
       const thisCartProduct = this;
-      thisCartProduct.amount = thisCartProduct.dom.amountWidget.input;
-      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
       thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
+        thisCartProduct.amount = thisCartProduct.amountWidget;
+        thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
