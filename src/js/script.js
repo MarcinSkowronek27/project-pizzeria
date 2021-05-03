@@ -378,9 +378,10 @@
       thisCartProduct.price = menuProduct.price;
       // name, amount, params, priceSingle, price
       thisCartProduct.getElements(element);
+      thisCartProduct.initCartWidget();
       console.log('thisCartProduct', thisCartProduct);
     }
-    // OBSŁUGA WIDGETU ILOŚCI SZTUK
+
     getElements(element) {
       const thisCartProduct = this;
 
@@ -390,6 +391,15 @@
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+    }
+    initCartWidget() {
+      const thisCartProduct = this;
+      thisCartProduct.amount = thisCartProduct.dom.amountWidget.input;
+      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+      thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
     }
   }
   const app = {
