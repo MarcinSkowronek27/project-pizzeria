@@ -358,16 +358,14 @@
       });
       thisCart.dom.productList.addEventListener('remove', function(){
         thisCart.remove(event.detail.cartProduct);
-      })
+      });
     }
 
     remove(){
       const thisCart = this;
 
-      const indexOfProduct = thisCart.products.indexOf(event.detail.cartProduct);
-      if (indexOfProduct == 1){
-
-      }
+      const remProduct = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      remProduct.remove();  
     }
 
     add(menuProduct) {
@@ -461,7 +459,7 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
-      console.log(thisCartProduct.remove());
+      // console.log('działa przycisk');
     }
     initActions() {
       const thisCartProduct = this;
