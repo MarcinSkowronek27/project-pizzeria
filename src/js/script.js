@@ -360,13 +360,19 @@
         thisCart.remove(event.detail.cartProduct);
       });
     }
-
-    remove(){
+// DO ZROBIENIA JESZCZE TO:
+    /*remove(){
       const thisCart = this;
-
-      const remProduct = thisCart.dom.wrapper.querySelector(select.cart.productList);
-      remProduct.remove();  
-    }
+      // param = event.detail.cartProduct;
+      const remProduct = new CustomEvent(event);
+      thisCart.remove(remProduct);
+      // thisCart.remove(event);
+      const indexOfProduct = thisCart.products.indexOf(event.detail.cartProduct);
+      console.log('indexOfProduct', indexOfProduct);
+      const removedProduct = thisCart.products.splice(indexOfProduct, 1);
+      console.log('removedProduct', removedProduct);
+      thisCart.update();
+    }*/
 
     add(menuProduct) {
       const thisCart = this;
