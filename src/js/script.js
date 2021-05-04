@@ -382,6 +382,11 @@
         thisCart.totalPrice = 0;
       } else {
         thisCart.totalPrice = subtotalPrice + deliveryFee;
+        for (let price of thisCart.dom.totalPrice){
+          price.innerHTML = thisCart.totalPrice;
+        }
+        thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
+        thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       }
       console.log(deliveryFee);
       console.log(totalNumber);
