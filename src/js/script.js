@@ -71,6 +71,11 @@
     cart: {
       defaultDeliveryFee: 20,
     },
+    db: {
+      url: '//localhost:3131',
+      products: 'products',
+      orders: 'orders',
+    },
   };
 
   const templates = {
@@ -361,17 +366,16 @@
       });
     }
     // // DO ZROBIENIA JESZCZE TO:
-    remove(event) {
+    remove(menuProduct) {
       const thisCart = this;
-      
-      thisCart.remove(event);
-      console.log(event);
-      // // thisCart.remove(event);
-      // const indexOfProduct = thisCart.products.indexOf(event.detail.cartProduct);
-      // console.log('indexOfProduct', indexOfProduct);
-      // const removedProduct = thisCart.products.splice(indexOfProduct, 1);
-      // console.log('removedProduct', removedProduct);
-      // thisCart.update();
+
+      const indexOfProduct = thisCart.products.indexOf(menuProduct);
+      console.log('indexOfProduct', indexOfProduct);
+      const removedProduct = thisCart.products.splice(indexOfProduct, 1);
+      console.log('removedProduct', removedProduct);
+      const removeDOM = thisCart.dom.wrapper.querySelector(menuProduct);
+      removeDOM.remove();
+      thisCart.update();
     }
 
     add(menuProduct) {
@@ -489,13 +493,28 @@
       const thisApp = this;
       // console.log('thisApp.data:', thisApp.data);
       for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     initData: function () {
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.products;
+
+      fetch(url)
+        .then(function (rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function (parsedResponse) {
+          console.log('parsedResponse', parsedResponse);
+
+          /* save parsedResponse as thisApp.data.products */
+          thisApp.data.products = parsedResponse ;
+          /* execute initMenu method */
+          thisApp.initMenu();
+        });
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
     init: function () {
       const thisApp = this;
@@ -505,7 +524,6 @@
       // console.log('settings:', settings);
       // console.log('templates:', templates);
       thisApp.initData();
-      thisApp.initMenu();
     },
   };
 
