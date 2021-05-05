@@ -361,10 +361,11 @@
       });
     }
     // // DO ZROBIENIA JESZCZE TO:
-     remove(event){
-        const thisCart = this;
+    remove(event) {
+      const thisCart = this;
       
-        thisCart.remove(event.detail.cartProduct);  
+      thisCart.remove(event);
+      console.log(event);
       // // thisCart.remove(event);
       // const indexOfProduct = thisCart.products.indexOf(event.detail.cartProduct);
       // console.log('indexOfProduct', indexOfProduct);
