@@ -386,6 +386,18 @@
         deliveryFee: settings.cart.defaultDeliveryFee,
         products: [],
       };
+      for (let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
       const options = {
         method: 'POST',
         headers: {
@@ -393,12 +405,9 @@
         },
         body: JSON.stringify(payload),
       };
-      
+
       fetch(url, options);
-      for(let prod of thisCart.products) {
-        payload.products.push(prod.getData());
-      }
-      console.log('payload', payload);
+      console.log('payload', payload.products);
     }
     remove(menuProduct) {
       const thisCart = this;
@@ -514,7 +523,7 @@
         thisCartProduct.remove();
       });
     }
-    getData(){
+    getData() {
       const thisCartProduct = this;
 
       const payloadSummary = {
