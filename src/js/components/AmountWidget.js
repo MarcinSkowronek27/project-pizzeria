@@ -1,3 +1,4 @@
+import {select, settings} from './settings.js';
 
 class AmountWidget {
     constructor(element) {
@@ -35,11 +36,11 @@ class AmountWidget {
         thisWidget.input.addEventListener('change', function () {
             thisWidget.setValue(thisWidget.input.value);
         });
-        thisWidget.linkDecrease.addEventListener('click', function () {
+        thisWidget.linkDecrease.addEventListener('click', function (event) {
             event.preventDefault();
             thisWidget.setValue(parseInt(thisWidget.value - 1));
         });
-        thisWidget.linkIncrease.addEventListener('click', function () {
+        thisWidget.linkIncrease.addEventListener('click', function (event) {
             event.preventDefault();
             thisWidget.setValue(parseInt(thisWidget.value + 1));
         });
@@ -53,3 +54,5 @@ class AmountWidget {
         thisWidget.element.dispatchEvent(event);
     }
 }
+
+export default AmountWidget;
