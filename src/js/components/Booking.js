@@ -38,14 +38,14 @@ class Booking {
         });
 
         thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
-        thisBooking.dom.datePicker.addEventListener('click', function (){
+        // thisBooking.dom.datePicker.addEventListener('click', function (){
 
-        });
+        // });
         
         thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
-        thisBooking.dom.hourPicker.addEventListener('click', function (){
+        // thisBooking.dom.hourPicker.addEventListener('click', function (){
 
-        });
+        // });
     }
 }
 
