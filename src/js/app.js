@@ -39,7 +39,7 @@ const app = {
         thisApp.activatePage(id);
         /* change URL hash */
         window.location.hash = '#/' + id;
-      })
+      });
     }
   },
 
