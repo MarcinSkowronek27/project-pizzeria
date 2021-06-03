@@ -8,7 +8,19 @@ class Booking {
         const thisBooking = this;
         thisBooking.render(element);
         thisBooking.initWidgets();
+        thisBooking.getData();
     }
+
+getData(){
+    const thisBooking = this;
+
+    const urls ={
+        bookings: '',
+        eventsCurrent: '',
+        eventsRepeat: '',
+        };
+
+}
 
     render(element) {
         const thisBooking = this;
@@ -21,7 +33,7 @@ class Booking {
         thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
         thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
         thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-        console.log(thisBooking.dom.datePicker);
+        // console.log(thisBooking.dom.datePicker);
 
         // console.log(thisBooking.dom.hoursAmount);
     }
