@@ -62,10 +62,37 @@ class Booking {
                 ]);
             })
             .then(function ([bookings, eventsCurrent, eventsRepeat]) {
-                console.log(bookings);
-                console.log(eventsCurrent);
-                console.log(eventsRepeat);
+                // console.log(bookings);
+                // console.log(eventsCurrent);
+                // console.log(eventsRepeat);
+                thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
             });
+    }
+
+    parseData(bookings, eventsCurrent, eventsRepeat) {
+        const thisBooking = this;
+
+        thisBooking.booked = {};
+
+        for (let item of eventsCurrent) {
+            thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+        }
+    }
+
+    makeBooked(date, hour, duration, table) {
+        const thisBooking = this;
+
+        if(typeof thisBooking.booked[date] == 'undefined'){
+            thisBooking.booked[date] = {};
+        }
+
+        const startHour = utils.hourToNumber(hour);
+
+        if(typeof thisBooking.booked[date][startHour] == 'undefined'){
+            thisBooking.booked[date][startHour] = [];
+        }
+
+        thisBooking.booked[date][startHour].push(table);
     }
 
     render(element) {
