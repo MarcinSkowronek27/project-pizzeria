@@ -266,8 +266,8 @@
     "bookings": [
         {
             "id": 1,
-            "date": "2021-06-05",
-            "hour": "12:00",
+            "date": "2021-06-09",
+            "hour": "15:00",
             "table": 1,
             "repeat": false,
             "duration": 4,
