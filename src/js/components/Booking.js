@@ -190,15 +190,12 @@ class Booking {
         thisBooking.dom.floorPlan.addEventListener('click', function (event) {
             const target = event.target;
             console.log(target);
-            if (!target.classList.contains('booked')) {
+            if (!target.classList.contains(classNames.booking.tableBooked)) {
                 if (target.classList.contains('object' && 'table')) {
-                    console.log('działa');
-                    target.classList.toggle('selected');
-                } else {
-                    console.log('nie działa');
+                    target.classList.toggle(classNames.booking.selectedTable);
                 }
             } else {
-                alert('Stolik nie jest dostępny w tym czasie');
+                alert('Stolik jest już zajęty. Wybierz inny');
             }
         });
     }
