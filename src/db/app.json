@@ -242,7 +242,7 @@
         },
         {
             "id": 4,
-            "date": "2021-05-06",
+            "date": "2021-03-03",
             "hour": "13:00",
             "table": 2,
             "repeat": "daily",
@@ -271,6 +271,16 @@
             "table": 1,
             "repeat": false,
             "duration": 4,
+            "ppl": 3,
+            "starters": []
+        },
+        {
+            "id": 2,
+            "date": "2021-06-09",
+            "hour": "11:00",
+            "table": 2,
+            "repeat": false,
+            "duration": 2,
             "ppl": 3,
             "starters": []
         }
