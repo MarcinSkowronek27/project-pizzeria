@@ -156,6 +156,10 @@
     line-height: 50px;
   }
 
+  .selected {
+    background-color: rgb(138, 214, 138);
+  }
+
   .table {
     @extend .h2;
     width: 70px;
@@ -172,7 +176,7 @@
         border-radius: 50%;
       }
     }
-
+    
     &.booked {
       cursor: not-allowed;
       color: lighten($color-dark, 40%);

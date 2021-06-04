@@ -162,10 +162,12 @@ class Booking {
         thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
         thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
         thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-        // console.log(thisBooking.dom.datePicker);
+        thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
 
+        // console.log(thisBooking.dom.datePicker);
         // console.log(thisBooking.dom.hoursAmount);
     }
+
     initWidgets() {
         const thisBooking = this;
 
@@ -184,6 +186,40 @@ class Booking {
         thisBooking.dom.wrapper.addEventListener('updated', function () {
             thisBooking.updateDOM();
         });
+
+        thisBooking.dom.floorPlan.addEventListener('click', function (event) {
+            const target = event.target;
+            console.log(target);
+            if (!target.classList.contains('booked')) {
+                if (target.classList.contains('object' && 'table')) {
+                    console.log('działa');
+                    target.classList.toggle('selected');
+                } else {
+                    console.log('nie działa');
+                }
+            } else {
+                alert('Stolik nie jest dostępny w tym czasie');
+            }
+        });
+    }
+
+    bookedTable() {
+        const thisBooking = this;
+        let table = document.getElementById('floor_plan');
+        let selectedDiv;
+
+        table.onclick = function (event) {
+            let target = event.target;
+            target.classList.add('selected');
+            // highlight(target);
+        }
+        function highlight(div) {
+            if (selectedDiv) {
+                selectedDiv.classList.remove('selected');
+            }
+            selectedDiv = div;
+            selectedDiv.classList.add('selected');
+        }
     }
 }
 
