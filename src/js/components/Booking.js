@@ -155,6 +155,7 @@ class Booking {
 
         thisBooking.dom = {};
         thisBooking.dom.wrapper = element;
+        console.log(thisBooking.dom.wrapper);
         const generatedHTML = templates.bookingWidget();
         thisBooking.dom.wrapper.innerHTML = generatedHTML;
         thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
@@ -191,33 +192,43 @@ class Booking {
             const target = event.target;
             console.log(target);
             if (!target.classList.contains(classNames.booking.tableBooked)) {
-                if (target.classList.contains('object' && 'table')) {
-                    target.classList.toggle(classNames.booking.selectedTable);
+                if (target.classList.contains('table')) {
+                    if (target.classList.contains('selected')) {
+                        for(let table of thisBooking.dom.tables){
+                        // target.classList.remove(classNames.booking.selectedTable);
+                        table.classList.add('selected');
+                        console.log('działa selected');
+                        }
+                    } else {
+                        target.classList.add(classNames.booking.selectedTable);
+                        console.log('włącza się else');
+                    }
                 }
+
             } else {
                 alert('Stolik jest już zajęty. Wybierz inny');
             }
         });
     }
 
-    bookedTable() {
-        const thisBooking = this;
-        let table = document.getElementById('floor_plan');
-        let selectedDiv;
+    // bookedTable() {
+    //     const thisBooking = this;
+    //     let table = document.getElementById('floor_plan');
+    //     let selectedDiv;
 
-        table.onclick = function (event) {
-            let target = event.target;
-            target.classList.add('selected');
-            // highlight(target);
-        }
-        function highlight(div) {
-            if (selectedDiv) {
-                selectedDiv.classList.remove('selected');
-            }
-            selectedDiv = div;
-            selectedDiv.classList.add('selected');
-        }
-    }
+    //     table.onclick = function (event) {
+    //         let target = event.target;
+    //         target.classList.add('selected');
+    //         // highlight(target);
+    //     }
+    //     function highlight(div) {
+    //         if (selectedDiv) {
+    //             selectedDiv.classList.remove('selected');
+    //         }
+    //         selectedDiv = div;
+    //         selectedDiv.classList.add('selected');
+    //     }
+    // }
 }
 
 

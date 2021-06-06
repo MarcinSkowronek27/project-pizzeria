@@ -87,6 +87,9 @@ export const classNames = {
     pages: {
         active: 'active',
     },
+    table: {
+        exist: '.table',
+    }
 };
 
 export const settings = {
