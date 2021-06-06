@@ -203,9 +203,12 @@ class Booking {
                             // console.log('działa selected');
                         } else {
                             target.classList.toggle(classNames.booking.selectedTable);
+                            // const clickedTable = table.getAttribute('data-table');
+                            thisBooking.clickedTable = target.getAttribute('data-table');
                             // console.log('włącza się else');
                         }
                     }
+                    console.log(thisBooking);
                 }
             } else {
                 // target.classList.remove('selected');
