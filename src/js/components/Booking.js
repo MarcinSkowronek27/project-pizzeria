@@ -166,7 +166,7 @@ class Booking {
         thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
 
         // console.log(thisBooking.dom.datePicker);
-        // console.log(thisBooking.dom.hoursAmount);
+        console.log(thisBooking.dom.hoursAmount);
     }
 
     initWidgets() {
@@ -174,11 +174,11 @@ class Booking {
 
         thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
         thisBooking.dom.peopleAmount.addEventListener('click', function () {
-
+            // thisBooking.removeBookedTable();
         });
         thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
         thisBooking.dom.hoursAmount.addEventListener('updated', function () {
-
+            // thisBooking.removeBookedTable();
         });
 
         thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
@@ -186,6 +186,8 @@ class Booking {
 
         thisBooking.dom.wrapper.addEventListener('updated', function () {
             thisBooking.updateDOM();
+            thisBooking.removeBookedTable();
+            console.log('działa');
         });
 
         thisBooking.dom.floorPlan.addEventListener('click', function (event) {
@@ -198,20 +200,27 @@ class Booking {
                         if (table.classList.contains('selected')) {
                             target.classList.toggle(classNames.booking.selectedTable);
                             table.classList.remove('selected');
-                            console.log('działa selected');
+                            // console.log('działa selected');
                         } else {
                             target.classList.toggle(classNames.booking.selectedTable);
-                            console.log('włącza się else');
+                            // console.log('włącza się else');
                         }
                     }
                 }
-
             } else {
+                // target.classList.remove('selected');
                 alert('Stolik jest już zajęty. Wybierz inny');
             }
         });
     }
 
+    removeBookedTable() {
+        const thisBooking = this;
+
+        for (let table of thisBooking.dom.tables) {
+            table.classList.remove('selected');
+        }
+    }
     // bookedTable() {
     //     const thisBooking = this;
     //     let table = document.getElementById('floor_plan');
