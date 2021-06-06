@@ -10,6 +10,7 @@ class Booking {
         thisBooking.render(element);
         thisBooking.initWidgets();
         thisBooking.getData();
+        thisBooking.clickedTable;
     }
 
     getData() {
@@ -191,30 +192,36 @@ class Booking {
         });
 
         thisBooking.dom.floorPlan.addEventListener('click', function (event) {
-            const target = event.target;
-            console.log(target);
-            if (!target.classList.contains(classNames.booking.tableBooked)) {
-                if (target.classList.contains('table')) {
-                    for (let table of thisBooking.dom.tables) {
-                        // target.classList.add(classNames.booking.selectedTable);
-                        if (table.classList.contains('selected')) {
-                            target.classList.toggle(classNames.booking.selectedTable);
-                            table.classList.remove('selected');
-                            // console.log('działa selected');
-                        } else {
-                            target.classList.toggle(classNames.booking.selectedTable);
-                            // const clickedTable = table.getAttribute('data-table');
-                            thisBooking.clickedTable = target.getAttribute('data-table');
-                            // console.log('włącza się else');
-                        }
-                    }
-                    console.log(thisBooking);
-                }
-            } else {
-                // target.classList.remove('selected');
-                alert('Stolik jest już zajęty. Wybierz inny');
-            }
+            thisBooking.initTables(event);
         });
+    }
+
+    initTables(event) {
+        const thisBooking = this;
+        
+        const target = event.target;
+        console.log(target);
+        if (!target.classList.contains(classNames.booking.tableBooked)) {
+            if (target.classList.contains('table')) {
+                for (let table of thisBooking.dom.tables) {
+                    // target.classList.add(classNames.booking.selectedTable);
+                    if (table.classList.contains('selected')) {
+                        target.classList.toggle(classNames.booking.selectedTable);
+                        table.classList.remove('selected');
+                        // console.log('działa selected');
+                    } else {
+                        target.classList.toggle(classNames.booking.selectedTable);
+                        // const clickedTable = table.getAttribute('data-table');
+                        thisBooking.clickedTable = target.getAttribute('data-table');
+                        // console.log('włącza się else');
+                    }
+                }
+                console.log(thisBooking);
+            }
+        } else {
+            // target.classList.remove('selected');
+            alert('Stolik jest już zajęty. Wybierz inny');
+        }
     }
 
     removeBookedTable() {
