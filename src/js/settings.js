@@ -62,6 +62,7 @@ export const select = {
         hoursAmount: '.hours-amount',
         tables: '.floor-plan .table',
         floorPlan: '.floor-plan',
+        
     },
     nav: {
         links: '.main-nav a',
@@ -88,7 +89,7 @@ export const classNames = {
         active: 'active',
     },
     table: {
-        exist: '.table',
+        exist: 'table',
     }
 };
 
