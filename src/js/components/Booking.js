@@ -166,9 +166,10 @@ class Booking {
         thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
         thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
         thisBooking.dom.bookTable = thisBooking.dom.wrapper.querySelector(select.booking.bookButton);
+        thisBooking.dom.phone = document.getElementById('phone').value;
 
         // console.log(thisBooking.dom.datePicker);
-        // console.log(thisBooking.dom.bookTable);
+        
     }
 
     initWidgets() {
@@ -250,12 +251,13 @@ class Booking {
             date: thisBooking.datePicker.correctValue,
             hour: thisBooking.hourPicker.correctValue,
             table: thisBooking.clickedTable,
-            // duration: thisCart.subTotalPrice,
+            duration: thisBooking.hoursAmount.correctValue,
             ppl: thisBooking.peopleAmount.correctValue,
             starters: [],
-            // phone: [],
+            phone: thisBooking.dom.phone,
             // address: fgfd,
         };
+        console.log(thisBooking.dom.phone);
         // for (let prod of thisCart.products) {
         //     payload.products.push(prod.getData());
         // }
