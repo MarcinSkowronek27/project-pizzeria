@@ -63,6 +63,7 @@ export const select = {
         tables: '.floor-plan .table',
         floorPlan: '.floor-plan',
         bookButton: '.btn-secondary',
+        checkbox: '.starters',
     },
     nav: {
         links: '.main-nav a',

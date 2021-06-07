@@ -168,7 +168,10 @@ class Booking {
         thisBooking.dom.bookTable = thisBooking.dom.wrapper.querySelector(select.booking.bookButton);
         thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector('input[name="phone"]');
         thisBooking.dom.address = thisBooking.dom.wrapper.querySelector('input[name="address"]');
-        // console.log(thisBooking.dom.datePicker);
+        thisBooking.dom.checkbox = thisBooking.dom.wrapper.querySelector(select.booking.checkbox);
+        thisBooking.starters = [];
+      
+        // console.log(thisBooking.dom.checkbox);
     }
 
     initWidgets() {
@@ -199,6 +202,10 @@ class Booking {
         thisBooking.dom.bookTable.addEventListener('click', function (event) {
             event.preventDefault();
             thisBooking.sendBooking();
+        });
+
+        thisBooking.dom.checkbox.addEventListener('click', function(event){
+            thisBooking.filterStarters(event);
         });
     }
 
@@ -244,8 +251,27 @@ class Booking {
         }
     }
 
+    filterStarters(event){
+        const thisBooking = this;
+        const target = event.target;
+
+        if (target.tagName === 'INPUT' && target.type === 'checkbox' && target.name === 'starter') {
+            if (target.checked) {
+              thisBooking.starters.push(event.target.value);
+              console.log(thisBooking.starters);
+            } else {
+              const indexNumber = thisBooking.starters.indexOf(event.target.value);
+              console.log('indexNumber:', indexNumber);
+              thisBooking.starters.splice(indexNumber, 1);
+            }
+        }
+        // console.log(thisBooking.starters);
+          return thisBooking.starters;
+    }
+
     sendBooking() {
         const thisBooking = this;
+
         // const url = settings.db.url + '/' + settings.db.bookings;
         const payload = {
             date: thisBooking.datePicker.correctValue,
@@ -257,9 +283,9 @@ class Booking {
             phone: thisBooking.dom.phone.value,
             address: thisBooking.dom.address.value,
         };
-        // console.log(thisBooking.dom.phone);
-        // for (let prod of thisCart.products) {
-        //     payload.products.push(prod.getData());
+        console.log(payload.starters);
+        // for (let starter of thisBooking.starters) {
+            payload.starters.push(thisBooking.starters);
         // }
 
         // const options = {
