@@ -64,6 +64,8 @@ export const select = {
         floorPlan: '.floor-plan',
         bookButton: '.btn-secondary',
         checkbox: '.starters',
+        phone: 'input[name="phone"]',
+        address: 'input[name="address"]',
     },
     nav: {
         links: '.main-nav a',
