@@ -218,7 +218,7 @@ class Booking {
                         
                         // console.log('działa selected');
                     } else {
-                        thisBooking.clickedTable = target.getAttribute('data-table');
+                        thisBooking.clickedTable = Number(target.getAttribute('data-table'));
                         table.classList.remove(classNames.booking.selectedTable);
                         target.classList.toggle(classNames.booking.selectedTable);
                         // const clickedTable = table.getAttribute('data-table');
