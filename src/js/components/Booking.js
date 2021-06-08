@@ -115,7 +115,8 @@ class Booking {
             }
 
             thisBooking.booked[date][hourBlock].push(table);
-            // thisBooking.sendBooking();
+            // thisBooking.booked.push(thisBooking.sendBooking());
+
         }
     }
 
@@ -214,7 +215,7 @@ class Booking {
         const thisBooking = this;
 
         const target = event.target;
-        console.log(target);  
+        console.log(target);
         if (!target.classList.contains(classNames.booking.tableBooked)) {
             if (target.classList.contains(classNames.table.exist)) {
                 for (let table of thisBooking.dom.tables) {
@@ -259,20 +260,20 @@ class Booking {
         if (target.tagName === 'INPUT' && target.type === 'checkbox' && target.name === 'starter') {
             if (target.checked) {
                 thisBooking.starters.push(event.target.value);
-                console.log(thisBooking.starters);
+                // console.log(thisBooking.starters);
             } else {
                 const indexNumber = thisBooking.starters.indexOf(event.target.value);
                 console.log('indexNumber:', indexNumber);
                 thisBooking.starters.splice(indexNumber, 1);
             }
         }
-        // console.log(thisBooking.starters);
+        console.log(thisBooking.starters);
         return thisBooking.starters;
     }
 
     sendBooking() {
         const thisBooking = this;
-
+        console.log(thisBooking.starters);
         const url = settings.db.url + '/' + settings.db.bookings;
         const payload = {
             date: thisBooking.datePicker.correctValue,
@@ -284,10 +285,9 @@ class Booking {
             phone: thisBooking.dom.phone.value,
             address: thisBooking.dom.address.value,
         };
-        console.log(payload.starters);
-        // for (let starter of thisBooking.starters) {
+
         payload.starters.push(thisBooking.starters);
-        // }
+        console.log('payload', payload);
 
         const options = {
             method: 'POST',
@@ -297,8 +297,18 @@ class Booking {
             body: JSON.stringify(payload),
         };
 
-        fetch(url, options);
-        console.log('payload', payload);
+        fetch(url, options)
+            .then(function (rawResponse) {
+                return rawResponse.json();
+            })
+            .then(function (parsedResponse) {
+                // console.log('parsedResponse', parsedResponse);
+                /* save parsedResponse as thisBooking.booked */
+                thisBooking.booked = parsedResponse;
+                /* execute makeBooked method */
+                thisBooking.makeBooked(payload.date, payload.hour, payload.table, payload.duration);
+            });
+
     }
 }
 
