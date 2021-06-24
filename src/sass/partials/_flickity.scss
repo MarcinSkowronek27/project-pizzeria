@@ -114,15 +114,17 @@ https://flickity.metafizzy.co
 }
 
 .main-carousel {
-    margin-top: 50px;
+    margin-top: 112px;
 }
 .carousel-cell {
     display: flex;
     flex-direction: row;
+
 }
 
 .carousel-text {
     display: flex;
+    margin-left: 10px;
     flex-direction: column;
 }
 .carousel-cell img{
