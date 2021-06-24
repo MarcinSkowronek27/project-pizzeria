@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
+    rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -24,7 +27,7 @@
           <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
-      </div>
+        </div>
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">0</span>
@@ -63,8 +66,8 @@
   </header>
 
   <div id="pages">
-    <section id="Home">
-      <div id="home-site" class="home-site container"></div>
+    <section id="home">
+      <div class="home-site-wrapper container"></div>
     </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
@@ -73,7 +76,9 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+  <script id="template-home-site" type="text">
 
+  </script>
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>
       <div class="widget-amount"> <!-- widget-amount -->
@@ -252,4 +257,5 @@
   <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
+
 </html>
