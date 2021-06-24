@@ -112,3 +112,20 @@ https://flickity.metafizzy.co
 .flickity-page-dots .dot.is-selected {
     opacity: 1;
 }
+
+.main-carousel {
+    margin-top: 50px;
+}
+.carousel-cell {
+    display: flex;
+    flex-direction: row;
+}
+
+.carousel-text {
+    display: flex;
+    flex-direction: column;
+}
+.carousel-cell img{
+    width: 200px;
+    height: 200px;
+}
