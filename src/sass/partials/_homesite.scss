@@ -25,25 +25,27 @@
     height: 120px;
     object-fit: cover;
     border-radius: $radius;
+    transition-timing-function: ease-in-out;
 }
 
 .img-text {
     position: absolute;
     width: 100%;
-    top: 40%;
+    top: 85%;
     transform: translateY(-50%);
     font-family: $font-header;
     text-transform: uppercase;
     color: #fff;
-    transition-timing-function: ease-in-out;
     h2 {
         font-weight: 400;
-        height: 180px;
+        margin: 0;
+        // height: 40px;
         transition: height 1s;
     }
     p {
-       
-        
+        // display: none;
+        margin-top: 50px;
+        transition: height 1s;
         // bottom: -300px;
         text-transform: initial;
         font-weight: 100;
@@ -52,13 +54,16 @@
 
 .card-info:hover {
     .img-text {
-        top: 50%;
+        top: 55%;
+        transition: top 1s;
     }
 
     h2 {
-        height: 40px;
+        // height: 180px;
     }
     p {
-       
+        // display: inline-block;
+      margin-top: 10px;
+      transition: ease-in-out 1s;
     }
 }
