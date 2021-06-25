@@ -119,15 +119,27 @@ https://flickity.metafizzy.co
 .carousel-cell {
     display: flex;
     flex-direction: row;
-
+    width: 100%;
 }
 
 .carousel-text {
+    p:nth-child(1) {
+        font-style: italic;
+    }
     display: flex;
     margin-left: 10px;
     flex-direction: column;
+    margin-right: 10px;
+    h3 {
+        margin: 0 0 10px 0;
+    }
+    p {
+        margin: 0 30px 5px 10px;
+    }
+    
 }
 .carousel-cell img{
-    width: 200px;
-    height: 200px;
+    object-fit: cover;
+    width: 180px;
+    height: 180px;
 }
