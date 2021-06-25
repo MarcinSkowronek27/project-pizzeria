@@ -35,7 +35,6 @@
     border-radius: $radius;
     transition-timing-function: ease-in-out;
     overflow: hidden;
-    border: hotpink 1px;
 }
 
 .img-text {
@@ -103,5 +102,31 @@
     p {
         margin-top: 0;
         font-weight: 200;
+    }
+}
+
+.gallery-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 120px 0 0 0;
+    padding: 0;
+}
+
+.gallery-item {
+    position: relative;
+    margin: 5px;
+    text-align: center;
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        width: 191px;
+        height: 194px;
+        border-radius: $radius;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    img:hover {
+        opacity: 1.0;
     }
 }

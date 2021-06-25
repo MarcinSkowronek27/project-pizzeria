@@ -115,6 +115,7 @@ https://flickity.metafizzy.co
 
 .main-carousel {
     margin-top: 112px;
+    margin-bottom: 50px;
 }
 .carousel-cell {
     display: flex;
@@ -123,7 +124,8 @@ https://flickity.metafizzy.co
 }
 
 .carousel-text {
-    p:nth-child(1) {
+    .italic {
+        font-size: 14px;
         font-style: italic;
     }
     display: flex;
@@ -131,7 +133,7 @@ https://flickity.metafizzy.co
     flex-direction: column;
     margin-right: 10px;
     h3 {
-        margin: 0 0 10px 0;
+        margin: 0 0 10px 10px;
     }
     p {
         margin: 0 30px 5px 10px;
@@ -142,4 +144,5 @@ https://flickity.metafizzy.co
     object-fit: cover;
     width: 180px;
     height: 180px;
+    border-radius: $radius;
 }
