@@ -127,6 +127,26 @@
         cursor: pointer;
     }
     img:hover {
-        opacity: 1.0;
+        opacity: 1;
+    }
+    figcaption {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+figcaption a {
+    .red:hover {
+        color: red;
+    }
+    .grey:hover {
+        color: rgb(71, 70, 70);
+    }
+    i {
+        font-size: 30px;
+        color: rgb(255, 255, 255);
+        margin: 0 5px;
     }
 }
