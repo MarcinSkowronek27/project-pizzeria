@@ -155,3 +155,11 @@ figcaption a {
         color: $color-main;
     }
 }
+
+footer {
+    margin-top: 20px;
+    width: auto;
+}
+footer:hover a{
+    color: $color-main;
+}
