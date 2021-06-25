@@ -123,8 +123,8 @@
         width: 191px;
         height: 194px;
         border-radius: $radius;
-        opacity: 0.8;
         cursor: pointer;
+        opacity: 0.8;
     }
     img:hover {
         opacity: 1;
@@ -136,17 +136,22 @@
         transform: translateY(-50%);
     }
 }
+.gallery-item:hover figcaption a{
+    display: inline;
+}
+
+.gallery-item:hover img {
+    opacity: 1;
+}
 
 figcaption a {
-    .red:hover {
-        color: red;
-    }
-    .grey:hover {
-        color: rgb(71, 70, 70);
-    }
+    display: none;
     i {
-        font-size: 30px;
+        font-size: 20px;
         color: rgb(255, 255, 255);
         margin: 0 5px;
+    }
+    i:hover {
+        color: $color-main;
     }
 }
