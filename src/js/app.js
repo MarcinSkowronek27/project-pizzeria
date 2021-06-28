@@ -4,7 +4,7 @@ import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 
 const app = {
-  initBooking: function (){
+  initBooking: function () {
     const thisApp = this;
 
     thisApp.widgetContainer = document.querySelector(select.containerOf.booking);
@@ -20,16 +20,16 @@ const app = {
     const idFromHash = window.location.hash.replace('#/', '');
 
     let pageMatchingHash = thisApp.pages[0].id;
-    for(let page of thisApp.pages){
-      if(page.id == idFromHash){
+    for (let page of thisApp.pages) {
+      if (page.id == idFromHash) {
         pageMatchingHash = page.id;
         break;
       }
     }
     thisApp.activatePage(pageMatchingHash);
 
-    for (let link of thisApp.navLinks){
-      link.addEventListener('click', function(event){
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
         // console.log(clickedElement);
@@ -54,8 +54,8 @@ const app = {
     for (let link of thisApp.navLinks) {
       link.classList.toggle(
         classNames.nav.active,
-         link.getAttribute('href') == '#' + pageId
-         );
+        link.getAttribute('href') == '#' + pageId
+      );
     }
   },
   initCart: function () {
@@ -63,8 +63,8 @@ const app = {
 
     const cartElem = document.querySelector(select.containerOf.cart);
     thisApp.cart = new Cart(cartElem);
-    
-    
+
+
     thisApp.productList = document.querySelector(select.containerOf.menu);
     thisApp.productList.addEventListener('add-to-cart', function (event) {
       app.cart.add(event.detail.product);
