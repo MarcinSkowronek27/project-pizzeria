@@ -16,6 +16,8 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.homeLinks = document.querySelectorAll(' .wrapper-info .col');
+    console.log(thisApp.homeLinks);
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -26,6 +28,17 @@ const app = {
         break;
       }
     }
+
+    for (let link of thisApp.homeLinks) {
+      link.addEventListener('click', function (event){
+        const clickedElement = this;
+        event.preventDefault();
+        const id = clickedElement.getAttribute('id');
+        thisApp.activatePage(id);
+        window.location.hash = '#/' + id;
+      })
+    }
+
     thisApp.activatePage(pageMatchingHash);
 
     for (let link of thisApp.navLinks) {
