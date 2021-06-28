@@ -9,19 +9,20 @@
 .wrapper-info {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     flex: 1 0 100%;
 }
 
 .col {
     flex: 0 0 50%;
-    max-width: 50%;
+    max-width: 49.5%;
 }
 
 .card-info {
     position: relative;
     height: 120px;
-    padding: 0 4px;
+    // padding: 0 4px;
     flex: 0 0 50%;
     width: 100%;
     text-align: center;
@@ -147,7 +148,8 @@
 }
 
 .gallery-item:hover section a {
-    display: inline;
+    opacity: 1;
+    transition: ease 0.5s;
 }
 
 .gallery-item:hover img {
@@ -155,7 +157,7 @@
 }
 
 section a {
-    display: none;
+    opacity: 0;
 
     i {
         font-size: 20px;
