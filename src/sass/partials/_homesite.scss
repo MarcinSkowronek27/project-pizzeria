@@ -149,16 +149,15 @@
 
 .gallery-item:hover section a {
     opacity: 1;
-    transition: ease 0.5s;
 }
 
 .gallery-item:hover img {
     opacity: 1;
 }
 
-section a {
+.gallery-wrapper section a {
     opacity: 0;
-
+    transition: opacity 0.5s;
     i {
         font-size: 20px;
         color: rgb(255, 255, 255);
@@ -172,7 +171,7 @@ section a {
 
 footer {
     margin-top: 20px;
-    width: auto;
+    width: 160px;
 }
 
 footer:hover a {
