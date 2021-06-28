@@ -17,7 +17,7 @@ const app = {
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
     thisApp.homeLinks = document.querySelectorAll(' .wrapper-info .col');
-    console.log(thisApp.homeLinks);
+    // console.log(thisApp.homeLinks);
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -30,13 +30,13 @@ const app = {
     }
 
     for (let link of thisApp.homeLinks) {
-      link.addEventListener('click', function (event){
+      link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
-        const id = clickedElement.getAttribute('id');
+        const id = clickedElement.getAttribute('data-link');
         thisApp.activatePage(id);
         window.location.hash = '#/' + id;
-      })
+      });
     }
 
     thisApp.activatePage(pageMatchingHash);
